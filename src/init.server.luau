@@ -4,12 +4,12 @@ local LoadMenu = require(script.LoadMenu)
 
 local Toolbar = plugin:CreateToolbar("Lighting Save/Load")
 
-local ToggleGuiButton = Toolbar:CreateButton("Lighting Menu", "Toggle lighting menu", "rbxassetid://16062413484")
+local ToggleGuiButton = Toolbar:CreateButton("Lighting Profiles", "View lighting profiles", "rbxassetid://16062413484")
 ToggleGuiButton.ClickableWhenViewportHidden = false
 
 local InterfaceInfo = DockWidgetPluginGuiInfo.new(Enum.InitialDockState.Float, false, true, 300, 250, 300, 250)
-local Interface = plugin:CreateDockWidgetPluginGui("Lighting Menu", InterfaceInfo)
-Interface.Title = "Lighting Menu"
+local Interface = plugin:CreateDockWidgetPluginGui("Lighting Profiles", InterfaceInfo)
+Interface.Title = "Lighting Profiles"
 
 ToggleGuiButton.Click:Connect(function()
 	Interface.Enabled = not Interface.Enabled
