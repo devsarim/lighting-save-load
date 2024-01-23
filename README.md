@@ -1,5 +1,5 @@
 # Lighting Save/Load (Roblox Studio Plugin)
-A plugin that allows you to save and load lighting properties. Lighting saves are referred to as 'profiles'.
+A plugin that allows you to save and load lighting properties and children. Lighting saves are referred to as 'profiles'.
 
 ### Download
 Get the plugin from the asset store [here](https://create.roblox.com/store/asset/16083256236) or save [the latest release](https://github.com/devsarim/lighting-save-load/releases) as a local plugin. 
