@@ -1,4 +1,5 @@
 local ChangeHistoryService = game:GetService("ChangeHistoryService")
+local CollectionService = game:GetService("CollectionService")
 local ServerStorage = game:GetService("ServerStorage")
 local Lighting = game:GetService("Lighting")
 
@@ -31,6 +32,29 @@ local function createProfile()
 	return profileFolder
 end
 
+local function determineParent()
+	local parentCounts = {}
+
+	for _, profile in CollectionService:GetTagged("LightingProfile") do
+		if not parentCounts[profile.Parent] then
+			parentCounts[profile.Parent] = 1
+		else
+			parentCounts[profile.Parent] += 1
+		end
+	end
+
+	local highestCount = 0
+	local commonParent = ServerStorage
+
+	for parent, count in parentCounts do
+		if count > highestCount then
+			commonParent = parent
+		end
+	end
+
+	return commonParent
+end
+
 return function(props)
 	local textBox = props.textBoxRef:getValue()
 
@@ -53,7 +77,7 @@ return function(props)
 			local profile = createProfile()
 			profile.Name = profileName
 			profile:AddTag("LightingProfile")
-			profile.Parent = ServerStorage
+			profile.Parent = determineParent()
 
 			ChangeHistoryService:SetWaypoint("Create lighting profile")
 		end,
